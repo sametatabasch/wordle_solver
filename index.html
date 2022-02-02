@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordle Çözücü</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="help">
+            <button id="help-button" class="icon" aria-label="help">
+                ?
+            </button>
+        </div>
+        <div class="title">
+            WORDLE TR
+        </div>
+        <div>
+
+        </div>
+    </header>
+    <div id="searchedWord">
+        <input type="text" class="char" id="firstChar" name="firstChar" maxlength="1">
+        <input type="text" class="char" id="secondChar" name="secondChar" maxlength="1">
+        <input type="text" class="char" id="thirdChar" name="thirdChar" maxlength="1">
+        <input type="text" class="char" id="fourthChar" name="fourthChar" maxlength="1">
+        <input type="text" class="char" id="fifthChar" name="fifthChar" maxlength="1">
+    </div>
+
+    <div class="lettersNot">
+        <p class="tooltip">
+            Birinci harf <input type="text" name="firstCharNot" id="firstCharNot" value="ğ,"> harflerinden biri olamaz
+            <span class="tooltiptext"> Her bir harf arasına virgül koyarak yazınız. </span>
+        </p>
+        <p class="tooltip">
+            İkinci harf <input type="text" name="secondCharNot" id="secondCharNot"> harflerinden biri olamaz
+            <span class="tooltiptext"> Her bir harf arasına virgül koyarak yazınız. </span>
+        </p>
+
+        <p class="tooltip">
+            Üçüncü harf <input type="text" name="thirdCharNot" id="thirdCharNot"> harflerinden biri olamaz
+            <span class="tooltiptext"> Her bir harf arasına virgül koyarak yazınız. </span>
+        </p>
+        <p class="tooltip">
+            Dördüncü harf <input type="text" name="fourthCharNot" id="fourthCharNot"> harflerinden biri olamaz
+            <span class="tooltiptext"> Her bir harf arasına virgül koyarak yazınız. </span>
+        </p>
+        <p class="tooltip">
+            Beşinci harf <input type="text" name="fifthCharNot" id="fifthCharNot"> harflerinden biri olamaz
+            <span class="tooltiptext"> Her bir harf arasına virgül koyarak yazınız. </span>
+        </p>
+    </div>
+    <div id="find">Kelimeleri Bul</div>
+    <ol id="foundWordList">
+
+    </ol>
+    <div id="keyboard">
+        <div class="row">
+            <button data-key="e">e</button>
+            <button data-key="r">r</button>
+            <button data-key="t">t</button>
+            <button data-key="y">y</button>
+            <button data-key="u">u</button>
+            <button data-key="ı">ı</button>
+            <button data-key="o">o</button>
+            <button data-key="p">p</button>
+            <button data-key="ğ">ğ</button>
+            <button data-key="ü">ü</button>
+        </div>
+        <div class="row">
+            <button data-key="a">a</button>
+            <button data-key="s">s</button>
+            <button data-key="d">d</button>
+            <button data-key="f">f</button>
+            <button data-key="g">g</button>
+            <button data-key="h">h</button>
+            <button data-key="j">j</button>
+            <button data-key="k">k</button>
+            <button data-key="l">l</button>
+            <button data-key="ş">ş</button>
+            <button data-key="i">i</button>
+        </div>
+        <div class="row">
+            <button data-key="z">z</button>
+            <button data-key="c">c</button>
+            <button data-key="v">v</button>
+            <button data-key="b">b</button>
+            <button data-key="n">n</button>
+            <button data-key="m">m</button>
+            <button data-key="ö">ö</button>
+            <button data-key="ç">ç</button>
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

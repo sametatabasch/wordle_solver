@@ -1,0 +1,276 @@
+:root {
+    --green: #6aaa64;
+    --darkendGreen: #538d4e;
+    --yellow: #c9b458;
+    --darkendYellow: #b59f3b;
+    --lightGray: #d8d8d8;
+    --gray: #86888a;
+    --darkGray: #939598;
+    --white: #fff;
+    --black: #212121;
+    /* Colorblind colors */
+    --orange: #f5793a;
+    --blue: #85c0f9;
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    --header-height: 50px;
+    --keyboard-height: 200px;
+    --game-max-width: 500px;
+}
+/* Light theme colors */
+:root {
+    --color-tone-1: #1a1a1b;
+    --color-tone-2: #787c7e;
+    --color-tone-3: #878a8c;
+    --color-tone-4: #d3d6da;
+    --color-tone-5: #edeff1;
+    --color-tone-6: #f6f7f8;
+    --color-tone-7: #ffffff;
+    --opacity-50: rgba(255, 255, 255, 0.5);
+}
+/* Constant colors and colors derived from theme */
+:root {
+    --color-present: var(--yellow);
+    --color-correct: var(--green);
+    --color-absent: var(--color-tone-2);
+    --tile-text-color: var(--color-tone-7);
+    --key-text-color: var(--color-tone-1);
+    --key-evaluated-text-color: var(--color-tone-7);
+    --key-bg: var(--color-tone-4);
+    --key-bg-present: var(--color-present);
+    --key-bg-correct: var(--color-correct);
+    --key-bg-absent: var(--color-absent);
+    --modal-content-bg: var(--color-tone-7);
+}
+.colorblind {
+    --color-correct: var(--orange);
+    --color-present: var(--blue);
+    --tile-text-color: var(--white);
+    --key-bg-present: var(--color-present);
+    --key-bg-correct: var(--color-correct);
+    --key-bg-absent: var(--color-absent);
+}
+.container{
+    max-width: 500px;
+    margin: 0 auto;
+}
+#searchedWord{
+    display: flex;
+    max-width: 500px;
+    justify-content: center;
+    margin: 0 auto;
+    align-content: center;
+}
+.char {
+    width: 50px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: bold;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: #333333;
+    text-transform: uppercase;
+    user-select: none;
+    text-align: center;
+    margin: 5px;
+}
+.char::before {
+    content: '';
+    display: inline-block;
+    padding-bottom: 100%;
+}
+
+#keyboard {
+    margin: 0 8px;
+    user-select: none;
+}
+
+#keyboard .row {
+    display: flex;
+    width: 100%;
+    margin: 0 auto 8px;
+    /* https://stackoverflow.com/questions/46167604/ios-html-disable-double-tap-to-zoom */
+    touch-action: manipulation;
+}
+
+#keyboard button {
+    text-transform: uppercase;
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    margin: 0 6px 0 0;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--key-bg);
+    color: var(--key-text-color);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+}
+
+#keyboard button:focus {
+    outline: none;
+}
+
+#keyboard button.fade {
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+#keyboard button:last-of-type {
+    margin: 0;
+}
+
+#keyboard button[data-state='correct'] {
+    background-color: var(--key-bg-correct);
+    color: var(--key-evaluated-text-color);
+}
+
+#keyboard button[data-state='present'] {
+    background-color: var(--key-bg-present);
+    color: var(--key-evaluated-text-color);
+}
+
+#keyboard button[data-state='absent'] {
+    background-color: var(--key-bg-absent);
+    color: var(--key-evaluated-text-color);
+}
+#foundWordList{
+    display: flex;
+    flex-direction: column;
+    max-height: 460px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    list-style: none;
+    align-content: space-around;
+}
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -110px; /* Use half of the width (120/2 = 60), to center the tooltip */
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.lettersNot input{
+    border-width: 0 0 1px 0;
+}
+/**
+Loading Animations
+ */
+.lds-grid {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-grid div {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #000;
+    animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+    top: 8px;
+    left: 8px;
+    animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+    top: 8px;
+    left: 32px;
+    animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+    top: 8px;
+    left: 56px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+    top: 32px;
+    left: 8px;
+    animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+    top: 32px;
+    left: 32px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+    top: 32px;
+    left: 56px;
+    animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+    top: 56px;
+    left: 8px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+    top: 56px;
+    left: 32px;
+    animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+    top: 56px;
+    left: 56px;
+    animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+#find{
+    padding: 5px;
+    text-align: center;
+    font-size: 1.5em;
+    background-color: var(--key-bg-correct);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 5px;
+}
+header .title {
+    font-size: 2em;
+}
