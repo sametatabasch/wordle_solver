@@ -82,32 +82,25 @@ function find() {
     let searchedWord = createSearchedWord()
     let foundWord = ""
 
-    availableCharList.filter((c) => {
-        if (searchedWord[0] === '_' && !firstCharNot.includes(c)) {
-            return true
-        } else return c === searchedWord[0];
+    firstCharArray = searchedWord[0] !== '_' ? [searchedWord[0]] : availableCharList
+    secondCharArray = searchedWord[1] !== '_' ? [searchedWord[1]] : availableCharList
+    thirdCharArray = searchedWord[2] !== '_' ? [searchedWord[2]] : availableCharList
+    fourthCharArray = searchedWord[3] !== '_' ? [searchedWord[3]] : availableCharList
+    fifthharArray = searchedWord[4] !== '_' ? [searchedWord[4]] : availableCharList
+    firstCharArray.filter((c) => {
+        return !firstCharNot.includes(c)
     }).every((firstChar) => {
-        availableCharList.filter((c) => {
-            if (searchedWord[1] === '_' && !secondCharNot.includes(c)) {
-                return true
-            } else return c === searchedWord[1];
-
+        secondCharArray.filter((c) => {
+            return !secondCharNot.includes(c)
         }).every((secondChar) => {
-            availableCharList.filter((c) => {
-                if (searchedWord[2] === '_' && !thirdCharNot.includes(c)) {
-                    return true
-                } else return c === searchedWord[2];
-
+            thirdCharArray.filter((c) => {
+                return !thirdCharNot.includes(c)
             }).every((thirdChar) => {
-                availableCharList.filter((c) => {
-                    if (searchedWord[3] === '_' && !fourthCharNot.includes(c)) {
-                        return true
-                    } else return c === searchedWord[3];
+                fourthCharArray.filter((c) => {
+                    return !fourthCharNot.includes(c)
                 }).every((fourthChar) => {
-                    availableCharList.filter((c) => {
-                        if (searchedWord[4] === '_' && !fifthCharNot.includes(c)) {
-                            return true
-                        } else return c === searchedWord[4];
+                    fifthharArray.filter((c) => {
+                        return  !fifthCharNot.includes(c)
                     }).every((fifthChar) => {
                         foundWord = firstChar + secondChar + thirdChar + fourthChar + fifthChar
                         let reg = "^.*?"
