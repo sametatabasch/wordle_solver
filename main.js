@@ -18,11 +18,11 @@ findButton.addEventListener('click', () => {
 })
 
 function createSearchedWord() {
-    let firstChar = document.getElementById('firstChar').value
-    let secondChar = document.getElementById('secondChar').value
-    let thirdChar = document.getElementById('thirdChar').value
-    let fourthChar = document.getElementById('fourthChar').value
-    let fifthChar = document.getElementById('fifthChar').value
+    let firstChar = document.getElementById('firstChar').value.toLowerCase()
+    let secondChar = document.getElementById('secondChar').value.toLowerCase()
+    let thirdChar = document.getElementById('thirdChar').value.toLowerCase()
+    let fourthChar = document.getElementById('fourthChar').value.toLowerCase()
+    let fifthChar = document.getElementById('fifthChar').value.toLowerCase()
 
     firstChar = firstChar === "" ? "_" : firstChar
     secondChar = secondChar === "" ? "_" : secondChar
@@ -72,12 +72,11 @@ function find() {
     let availableCharList = charList.filter((c) => {
         return !notAvailableCharList.includes(c)
     })
-    console.log(availableCharList)
-    let firstCharNot = document.getElementById('firstCharNot').value.split(',')
-    let secondCharNot = document.getElementById('secondCharNot').value.split(',')
-    let thirdCharNot = document.getElementById('thirdCharNot').value.split(',')
-    let fourthCharNot = document.getElementById('fourthCharNot').value.split(',')
-    let fifthCharNot = document.getElementById('fifthCharNot').value.split(',')
+    let firstCharNot = document.getElementById('firstCharNot').value.split(',').map(l => l.toLowerCase())
+    let secondCharNot = document.getElementById('secondCharNot').value.split(',').map(l => l.toLowerCase())
+    let thirdCharNot = document.getElementById('thirdCharNot').value.split(',').map(l => l.toLowerCase())
+    let fourthCharNot = document.getElementById('fourthCharNot').value.split(',').map(l => l.toLowerCase())
+    let fifthCharNot = document.getElementById('fifthCharNot').value.split(',').map(l => l.toLowerCase())
 
 
     let searchedWord = createSearchedWord()
