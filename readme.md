@@ -7,7 +7,9 @@ Oyun kurallarına göre belirlediğimiz harfleri dikkate alarak uygun kelimes li
 
 Ne kadar çok veri girersek liste o kadar daralıyor ve sonuca ulaşmamıza yardımcı oluyor. 
 
-Ekranın altında bulunan harflere tıklayarak o harfleri eleyebiliriz.
-Harflere üst karakter (shift) tuşu ile birlikte basarak o harfin kelimede olmak zorunda olduğunu belirtmiş oluyoruz.
+Ekranın altında bulunan harflere tıklayarak o harfleri oyun kurallarına göre renklendirebilirsiniz.
+İlk tıklamada harf koyu gri olarak reknlendirilir(kelimede olmayan harf).
+İkinci tıklamada harf sarı olarak renklerindiril (kelimede olup yanlış konumda olan harf).
+
 
 [wordle-solver.gencbilisim.net](https://wordle-solver.gencbilisim.net) adresinde kullanabilirsiniz.

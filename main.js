@@ -35,26 +35,21 @@ function createSearchedWord() {
 document.querySelectorAll('#keyboard button').forEach((letterButton) => {
     letterButton.addEventListener('click', function (e) {
         key = this.getAttribute('data-key')
-        if (e.shiftKey) {
-            if (this.hasAttribute("data-state")) {
+        if (!this.hasAttribute("data-state")) {
+            this.setAttribute('data-state', "absent")
+            notAvailableCharList.push(key)
+        } else {
+            if (this.getAttribute("data-state") == "absent") {
+                if (notAvailableCharList.includes(key)) {
+                    notAvailableCharList = notAvailableCharList.filter(item => item !== key) //remove key from notAvailableCharList
+                }
+                this.setAttribute('data-state', "present")
+                mustUseCharList.push(key)
+            } else {
                 this.removeAttribute("data-state");
                 if (mustUseCharList.includes(key)) {
                     mustUseCharList = mustUseCharList.filter(item => item !== key) //remove key from mustUseCharList
                 }
-            } else {
-                this.setAttribute('data-state', "present")
-                mustUseCharList.push(key)
-            }
-
-        } else {
-            if (this.hasAttribute("data-state")) {
-                this.removeAttribute("data-state");
-                if (notAvailableCharList.includes(key)) {
-                    notAvailableCharList = notAvailableCharList.filter(item => item !== key) //remove key from notAvailableCharList
-                }
-            } else {
-                this.setAttribute('data-state', "absent")
-                notAvailableCharList.push(key)
             }
         }
 
@@ -100,7 +95,7 @@ function find() {
                     return !fourthCharNot.includes(c)
                 }).every((fourthChar) => {
                     fifthharArray.filter((c) => {
-                        return  !fifthCharNot.includes(c)
+                        return !fifthCharNot.includes(c)
                     }).every((fifthChar) => {
                         foundWord = firstChar + secondChar + thirdChar + fourthChar + fifthChar
                         let reg = "^.*?"
